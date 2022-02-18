@@ -16,8 +16,8 @@ from utils import utils, dataloader, generate_spiral_seq
 from arguments import load_args
 
 def main(fold):
-    run = 'test_setup_weighted_batch'+str(fold)
-    checkpoint_epoch = 500
+    run = 'path-to-checkpoint-name'
+    checkpoint_epoch = 600
 
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'runs/', run)
     args = load_args(path+"/args.json")

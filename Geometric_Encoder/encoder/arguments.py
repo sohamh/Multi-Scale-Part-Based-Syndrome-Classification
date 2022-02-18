@@ -6,12 +6,10 @@ import torch.cuda
 
 
 def parse_args(fold=0,seg_num=1,seg_level=0):
-    base = '/usr/local/micapollo01/MIC/DATA/STAFF/smahdi0/tmp/'
-
     parser = argparse.ArgumentParser(description='PyTorch Autoencoder')
 
     # general
-    parser.add_argument('--name', default='8k_journal_mnorm_24dim_dv2_uncorrected', type=str, help='name of experiment')
+    parser.add_argument('--name', default='GE', type=str, help='name of experiment')
     parser.add_argument('--comment', default='first run of triplet loss with the updated and corrected data',
                         type=str)
     parser.add_argument('--seed', default=7, type=int, help='set random seed')
@@ -25,7 +23,6 @@ def parse_args(fold=0,seg_num=1,seg_level=0):
                         help='enables CUDA training')
 
     # data
-    # parser.add_argument('--total_train_size', default=2277, help='# trainset ')
     parser.add_argument('--data_dir',
                         default='path-to-folder/Batch' + str(
                             fold) + '_trainset.mat',
@@ -71,7 +68,6 @@ def parse_args(fold=0,seg_num=1,seg_level=0):
     parser.add_argument('--margin', type=float, default=0.2, metavar='M',
                         help='margin for triplet loss (default: 0.2)')
     parser.add_argument('--with_softmax',default=False, type=bool,help='add softmax to loss?')
-    parser.add_argument('--texture_only', default=False, type=bool, help='network for texture data only?')
     parser.add_argument('--tl_weight', type=float, default=8, help='weight for tripletloss factor in loss')
     parser.add_argument('--grayscale', default=False, type=bool, help='grayscale')
 
@@ -85,11 +81,8 @@ def parse_args(fold=0,seg_num=1,seg_level=0):
     args = parser.parse_args()
     args.seg_num = seg_num
     args.seg_level = seg_level
-    if (args.texture_only == True):
-        args.name = "texture_" + args.name + "_level" + str(seg_level) + "_segment" + str(seg_num) + "_batch" + str(
-            fold)
-    else:
-        args.name = args.name + "_level" + str(seg_level) + "_segment" + str(seg_num) + "_batch" + str(fold)
+
+    args.name = args.name + "_level" + str(seg_level) + "_segment" + str(seg_num) + "_batch" + str(fold)
 
     return args
 
