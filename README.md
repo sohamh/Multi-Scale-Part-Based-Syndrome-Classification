@@ -7,3 +7,5 @@ Embeddings folder contains all embeddings obtained from GE and PCA, based on the
 
 Classification folder contains code for producing the classification results. And Results folder contains the results obtained based on the embeddings.
 
+Reference:
+S. S. Mahdi et al., "Multi-Scale Part-Based Syndrome Classification of 3D Facial Images," in IEEE Access, vol. 10, pp. 23450-23462, 2022, doi: 10.1109/ACCESS.2022.3153357.
